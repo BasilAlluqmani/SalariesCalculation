@@ -2,6 +2,7 @@ package com.albasil.salarycalculation_app
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -65,10 +67,10 @@ fun LazyColumn() {
         TotalSalary()
 
 
+        SpinnerLate()
 
 
-
-     //   CalculaterSalary()
+        //   CalculaterSalary()
 
 
     }
@@ -77,12 +79,13 @@ fun LazyColumn() {
 }
 
 
-var daysOfMonth:String = ""
-var numberHours :String = ""
+var daysOfMonth: String = ""
+var numberHours: String = ""
+var numberOfLateHours: String = ""
 
 
-var numberDaysOfAbsent :String =""
-var numberExtraDaysOff :String =""
+var numberDaysOfAbsent: String = ""
+var numberExtraDaysOff: String = ""
 
 
 @Composable
@@ -145,8 +148,67 @@ fun SpinnerDays() {
 }
 
 
+@Composable
+fun SpinnerLate() {
+    val listOfHours = mutableListOf<String>()
+
+    var expanded by remember { mutableStateOf(false) }
+
+    if (!numberHours.isNullOrEmpty()) {
+        for (i in 0..numberHours.toInt()) {
+            listOfHours.add("$i")
+        }
+    }
+    var selectedNumberOfLateHours by remember { mutableStateOf("") }
+
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
+
+    val icon = if (expanded)
+        Icons.Filled.ArrowDropDown //it requires androidx.compose.material:material-icons-extended
+    else
+        Icons.Filled.KeyboardArrowDown
+
+    Column() {
+
+        numberOfLateHours = selectedNumberOfLateHours
+        OutlinedTextField(
+            value = selectedNumberOfLateHours,
+            onValueChange = { selectedNumberOfLateHours = it },
+            // enabled = false,
+            singleLine = true,
+            modifier = Modifier
+                .fillMaxWidth()
+                .onGloballyPositioned { coordinates ->
+                    //This value is used to assign to the DropDown the same width
+                    textfieldSize = coordinates.size.toSize()
+                },
+            label = { Text("Selected Late Hours") },
+            trailingIcon = {
+                Icon(icon, "contentDescription",
+                    Modifier.clickable { expanded = !expanded })
 
 
+            },
+            readOnly = true
+
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier
+                .width(with(LocalDensity.current) { textfieldSize.width.toDp() })
+        ) {
+            listOfHours.forEach { label ->
+                DropdownMenuItem(onClick = {
+                    selectedNumberOfLateHours = label
+                }) {
+                    Text(text = label)
+                }
+            }
+        }
+    }
+
+}
 
 
 @Composable
@@ -165,7 +227,8 @@ fun WorkHours() {
         modifier = Modifier
             .fillMaxWidth(),
         label = {
-            Text("WorK Hours") },
+            Text("WorK Hours")
+        },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 
 
@@ -174,7 +237,6 @@ fun WorkHours() {
     numberHours = workHours
 
 }
-
 
 
 @Composable
@@ -190,16 +252,17 @@ fun DaysOfAbsent() {
         modifier = Modifier
             .fillMaxWidth(),
         label = {
-            Text("Days Of Absent") },
+            Text("Days Of Absent")
+        },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        )
+    )
     numberDaysOfAbsent = daysOfAbsent
 
 }
 
 
 @Composable
-fun ExtraOffDays(){
+fun ExtraOffDays() {
 
 
     var numberExtraOffDays by remember {
@@ -212,18 +275,17 @@ fun ExtraOffDays(){
         modifier = Modifier
             .fillMaxWidth(),
         label = {
-            Text("Extra Days Off") },
+            Text("Extra Days Off")
+        },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
     )
-    numberExtraDaysOff =numberExtraOffDays
+    numberExtraDaysOff = numberExtraOffDays
 }
-
-
-
 
 
 @Composable
 fun TotalSalary() {
+    val context = LocalContext.current
 
     var employeeSalary by remember {
         mutableStateOf("")
@@ -241,7 +303,6 @@ fun TotalSalary() {
         )
 
 
-
         var DailyPrice by remember {
             mutableStateOf("${employeeSalary}")
         }
@@ -249,6 +310,9 @@ fun TotalSalary() {
             mutableStateOf("")
         }
         var DaysOfAbsent by remember {
+            mutableStateOf("")
+        }
+        var TotalLateHours by remember {
             mutableStateOf("")
         }
 
@@ -267,54 +331,77 @@ fun TotalSalary() {
 
                 //Calucletor------------------
 
-
                 DailyPrice = "${employeeSalary.toDouble() / daysOfMonth.toInt()}"
 
-                HourlyPrice = "${DailyPrice.toDouble() / numberHours.toInt()} "
+                HourlyPrice = "${ DailyPrice.toDouble() / numberHours.toInt()} "
+
+                "%.2f".format(HourlyPrice.toDouble())
 
 
+                var hourlyPrice="%.2f".format(HourlyPrice.toDouble())
 
+
+               // HourlyPrice =hourlyPrice
+                HourlyPrice ="%.2f".format(HourlyPrice.toDouble())
+                DailyPrice ="%.2f".format(DailyPrice.toDouble())
+
+
+                Toast.makeText(context, "Daily Price :$DailyPrice , Hourly Price:$HourlyPrice", Toast.LENGTH_SHORT).show()
                 if (!numberExtraDaysOff.isNullOrEmpty()) {
-                    DaysOff = "${(numberExtraDaysOff.toInt() * DailyPrice.toDouble()) *1.50 }"
+                    DaysOff = "${(numberExtraDaysOff.toInt() * DailyPrice.toDouble()) * 1.50}"
 
-                }else{
+                } else {
                     DaysOff = "0"
 
 
                 }
 
 
-                DaysOfAbsent = if (!numberDaysOfAbsent.isNullOrEmpty()){
+
+
+                DaysOfAbsent = if (!numberDaysOfAbsent.isNullOrEmpty()) {
                     "${(DailyPrice.toDouble() * numberDaysOfAbsent.toInt())}"
-                }else{
+                } else {
                     "0"
                 }
 
-               TotalSalary= "${(employeeSalary.toDouble() - DaysOfAbsent.toDouble()) + (DaysOff.toDouble()) }"
+                if (!numberOfLateHours.isNullOrEmpty() ){
+                    TotalLateHours= "${numberOfLateHours.toInt() * HourlyPrice.toDouble()}"
+
+                }else{
+                    TotalLateHours= "0"
+
+                }
+
+
+
+                TotalSalary =
+                    "${(employeeSalary.toDouble() - DaysOfAbsent.toDouble()) + (DaysOff.toDouble() - TotalLateHours.toDouble())}"
 
             } else {
                 DailyPrice = "You must enter Employee and Days Of Month !!!"
             }
+
+
 
         }
         ) {
             Text(text = "Cal")
         }
 
+
+
         Text(text = " Salary : $employeeSalary ")
-        Text(text = " Daily $DailyPrice  Hours $HourlyPrice  ")
+        Text(text = " Daily $DailyPrice  Hours ${HourlyPrice}  ")
 
         Text(text = " Number Days Of Absent: -$DaysOfAbsent")
+        Text(text = " Late Hours: -$TotalLateHours")
 
         Text(text = " Total Extra Days Off: $DaysOff")
 
 
 
         Text(text = " TotalSalary  $$TotalSalary")
-
-
-
-
 
 
     }
@@ -327,8 +414,8 @@ fun TotalSalary() {
 fun CalculaterSalary() {
 
 
-    OutlinedButton(onClick = { Log.e("BUTTON", "")
-
+    OutlinedButton(onClick = {
+        Log.e("BUTTON", "")
 
 
     }) {
