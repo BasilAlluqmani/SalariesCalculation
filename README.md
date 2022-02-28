@@ -30,18 +30,17 @@ Note: The employee's diary is calculated on the days of his leave with one and a
 
 
 
-<img src="https://user-images.githubusercontent.com/91476827/156038766-e92816c1-197a-4041-963c-fca1c27b29fe.png"  height="400"/>
+<img src="https://user-images.githubusercontent.com/91476827/156038766-e92816c1-197a-4041-963c-fca1c27b29fe.png"  height="600"/>
 
 
-<img src="https://user-images.githubusercontent.com/91476827/156038775-3e9b2dc7-95d0-422b-90f7-1ff85ffbc2f3.png" width="300" height="600"/>
-<img src="https://user-images.githubusercontent.com/91476827/156038778-8f4899bd-e1b2-499f-9639-d8a624cf8be4.png" width="100" height="100"/>
-<img src="https://user-images.githubusercontent.com/91476827/156038781-44cf5afd-10ad-40ce-8a57-1514b5318d0b.png" width="100" height="100"/>
+<img src="https://user-images.githubusercontent.com/91476827/156038775-3e9b2dc7-95d0-422b-90f7-1ff85ffbc2f3.png" height="600"/>
+
+<img src="https://user-images.githubusercontent.com/91476827/156038778-8f4899bd-e1b2-499f-9639-d8a624cf8be4.png"  height="600"/>
+
+<img src="https://user-images.githubusercontent.com/91476827/156038781-44cf5afd-10ad-40ce-8a57-1514b5318d0b.png"  height="600"/>
 
 
-![Screenshot_1](https://user-images.githubusercontent.com/91476827/156038766-e92816c1-197a-4041-963c-fca1c27b29fe.png)
-![Screenshot_2](https://user-images.githubusercontent.com/91476827/156038775-3e9b2dc7-95d0-422b-90f7-1ff85ffbc2f3.png)
-![Screenshot_3](https://user-images.githubusercontent.com/91476827/156038778-8f4899bd-e1b2-499f-9639-d8a624cf8be4.png )
-![Screenshot_4](https://user-images.githubusercontent.com/91476827/156038781-44cf5afd-10ad-40ce-8a57-1514b5318d0b.png )
+
 
 
 
