@@ -25,7 +25,22 @@
 ![Feather App Logo](https://user-images.githubusercontent.com/91476827/148527193-6db4948f-8337-4888-b193-669311ad3764.png)
 
 
-![Screenshot 1](https://user-images.githubusercontent.com/91476827/150794367-8d05aaf9-d885-44a9-a08f-2e9111da5e12.jpg)
+![Screenshot 1](https://user-images.githubusercontent.com/91476827/156038766-e92816c1-197a-4041-963c-fca1c27b29fe.png)
+
+
+![Screenshot 1](https://user-images.githubusercontent.com/91476827/156038775-3e9b2dc7-95d0-422b-90f7-1ff85ffbc2f3.png)
+
+
+![Screenshot 1](https://user-images.githubusercontent.com/91476827/156038778-8f4899bd-e1b2-499f-9639-d8a624cf8be4.png)
+
+
+![Screenshot 1](https://user-images.githubusercontent.com/91476827/156038781-44cf5afd-10ad-40ce-8a57-1514b5318d0b.png)
+
+
+![Screenshot_1](https://user-images.githubusercontent.com/91476827/156038766-e92816c1-197a-4041-963c-fca1c27b29fe.png)
+![Screenshot_2](https://user-images.githubusercontent.com/91476827/156038775-3e9b2dc7-95d0-422b-90f7-1ff85ffbc2f3.png)
+![Screenshot_3](https://user-images.githubusercontent.com/91476827/156038778-8f4899bd-e1b2-499f-9639-d8a624cf8be4.png)
+![Screenshot_4](https://user-images.githubusercontent.com/91476827/156038781-44cf5afd-10ad-40ce-8a57-1514b5318d0b.png)
 
 
 
