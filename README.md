@@ -9,10 +9,10 @@
 
 ## App idea :bulb:	
 
-### SalariesCalculation App  It facilitates the process of calculating employee salaries
+### Salaries Calculation App  It facilitates the process of calculating employee salaries
 
 
-Note: The employee's diary is calculated on the days of his leave with one and a half days
+- Note: The employee's diary is calculated on the days of his leave with one and a half days
 
 
 
