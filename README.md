@@ -30,8 +30,6 @@ Note: The employee's diary is calculated on the days of his leave with one and a
 
 ## Interfaces App 📷
 
-![Feather App Logo](https://user-images.githubusercontent.com/91476827/148527193-6db4948f-8337-4888-b193-669311ad3764.png)
-
 
 ![Screenshot_1](https://user-images.githubusercontent.com/91476827/156038766-e92816c1-197a-4041-963c-fca1c27b29fe.png")
 ![Screenshot_2](https://user-images.githubusercontent.com/91476827/156038775-3e9b2dc7-95d0-422b-90f7-1ff85ffbc2f3.png  |{width=40px height=400px})
